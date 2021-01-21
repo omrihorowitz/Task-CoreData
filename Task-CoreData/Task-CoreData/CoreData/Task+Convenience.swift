@@ -8,11 +8,12 @@
 import CoreData
 
 extension Task {
-    @discardableResult convenience init(name: String, notes: String?, dueDate: Date?, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, notes: String?, dueDate: Date?, id: String = UUID().uuidString, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.notes = notes
         self.dueDate = dueDate
+        self.id = id
     }
     
     func add(taskWithName name: String, notes: String?, dueDate: Date?) {

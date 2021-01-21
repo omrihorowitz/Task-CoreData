@@ -15,6 +15,7 @@ class TaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var completionButton: UIButton!
+    @IBOutlet weak var dueDateLabel: UILabel!
     
     var task: Task? {
         didSet {
@@ -30,10 +31,13 @@ class TaskTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let task = task else { return }
+        let dueDateFormatted = DateFormatter.dueDate.string(from: task.dueDate ?? Date())
         nameLabel.text = task.name
         if task.isComplete {
+            dueDateLabel.text = "Completed by: \(dueDateFormatted)"
             completionButton.setBackgroundImage(UIImage(systemName: "checkmark.square"), for: .normal)
         } else {
+            dueDateLabel.text = "Complete by: \(dueDateFormatted)"
             completionButton.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
         }
     }

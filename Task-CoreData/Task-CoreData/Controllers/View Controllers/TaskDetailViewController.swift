@@ -18,6 +18,7 @@ class TaskDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -30,6 +31,9 @@ class TaskDetailViewController: UIViewController {
         } else {
             TaskController.shared.createTaskWith(name: name, notes: notes, dueDate: taskDueDatePicker.date)
         }
+        
+        
+        
         navigationController?.popViewController(animated: true)
     }
     
